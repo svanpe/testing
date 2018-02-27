@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+
+	<groupId>test</groupId>
+	<artifactId>simple-arquilian</artifactId>
+	<version>1.0-SNAPSHOT</version>
+	<packaging>jar</packaging>
+
+	<name>simple-arquilian</name>
+
+	<prerequisites>
+		<maven>3</maven>
+	</prerequisites>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<maven.compiler.source>1.7</maven.compiler.source>
+		<maven.compiler.target>1.7</maven.compiler.target>
+		<arquillian.version>1.1.11.Final</arquillian.version>
+		<arquillan.glassfish.embedded.version>1.0.0.Final</arquillan.glassfish.embedded.version>
+		<arquillian_persistence.version>1.0.0.Alpha5</arquillian_persistence.version>
+		<glassfish.embedded.all.version>4.1.1</glassfish.embedded.all.version>
+		<ejb.version>3.1</ejb.version>
+		<jpa.version>2.1.0</jpa.version>
+	</properties>
+
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.jboss.arquillian</groupId>
+				<artifactId>arquillian-bom</artifactId>
+				<version>${arquillian.version}</version>
+				<scope>import</scope>
+				<type>pom</type>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
+
+	<dependencies>
+
+	
+
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.11</version>
+			<scope>test</scope>
+		</dependency>
+
+
+		<!-- https://mvnrepository.com/artifact/org.mockito/mockito-all -->
+		<dependency>
+			<groupId>org.mockito</groupId>
+			<artifactId>mockito-all</artifactId>
+			<version>1.10.19</version>
+		</dependency>
+
+
+		<dependency>
+			<groupId>org.glassfish</groupId>
+			<artifactId>javax.ejb</artifactId>
+			<version>${ejb.version}</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.eclipse.persistence</groupId>
+			<artifactId>javax.persistence</artifactId>
+			<version>${jpa.version}</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.jboss.arquillian.junit</groupId>
+			<artifactId>arquillian-junit-container</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.jboss.arquillian.extension</groupId>
+			<artifactId>arquillian-persistence-api</artifactId>
+			<version>${arquillian_persistence.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.jboss.arquillian.extension</groupId>
+			<artifactId>arquillian-persistence-impl</artifactId>
+			<version>${arquillian_persistence.version}</version>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.jboss.shrinkwrap.resolver</groupId>
+			<artifactId>shrinkwrap-resolver-impl-maven</artifactId>
+			<scope>test</scope>
+		</dependency>
+		
+		<!--  Memory Database -->
+		
+		<dependency>
+			<groupId>com.h2database</groupId>
+			<artifactId>h2</artifactId>
+			<version>1.4.195</version>
+			<scope>test</scope>
+		</dependency>
+
+	</dependencies>
+
+	<reporting>
+		<plugins>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>2.17</version>
+			</plugin>
+
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>cobertura-maven-plugin</artifactId>
+				<version>2.7</version>
+			</plugin>
+
+		</plugins>
+
+
+	</reporting>
+
+	<profiles>
+		<profile>
+			<id>glassfish</id>
+			<dependencies>
+				<dependency>
+					<groupId>org.jboss.arquillian.container</groupId>
+					<artifactId>arquillian-glassfish-embedded-3.1</artifactId>
+					<version>${arquillan.glassfish.embedded.version}</version>
+					<scope>test</scope>
+				</dependency>
+				<!-- <dependency> <groupId>org.glassfish.extras</groupId> <artifactId>glassfish-embedded-all</artifactId> 
+					<version>${glassfish.embedded.all.version}</version> <scope>test</scope> 
+					</dependency> -->
+				<dependency>
+					<groupId>org.glassfish.main.extras</groupId>
+					<artifactId>glassfish-embedded-all</artifactId>
+					<version>4.1.1</version>
+					<scope>test</scope>
+				</dependency>
+			</dependencies>
+		</profile>
+
+	</profiles>
+
+</project>
