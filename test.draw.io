@@ -49,6 +49,6 @@
         <mxCell id="18" value="Recherche et analyse de texte : Elasticsearch\nAnalyse de données vectorielles : Apache Solr, Faiss\nAnalyse de données géospatiales : Elasticsearch, PostGIS" style="text;html=1;align=center;" vertex="1" parent="1">
           <mxGeometry x="20" y="590" width="250" height="130" as="geometry"/>
         </mxCell>
-      </mxGraphModel>
+      </mxGraphModel></root>
     </diagram>
 </mxfile>
